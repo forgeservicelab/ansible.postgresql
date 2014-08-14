@@ -1,0 +1,9 @@
+[submodule "roles/forge_ssl"]
+	path = roles/forge_ssl
+	url = ssh://gitlab@git.forgeservicelab.fi:10022/ansible-roles/forge_ssl.git
+[submodule "roles/common"]
+	path = roles/common
+	url = ssh://gitlab@git.forgeservicelab.fi:10022/ansible-roles/common.git
+[submodule "roles/zenoamaro.postgresql"]
+	path = roles/zenoamaro.postgresql
+	url = https://github.com/zenoamaro/ansible-postgresql.git

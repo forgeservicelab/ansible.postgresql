@@ -1,0 +1,13 @@
+---
+- hosts: all
+  sudo: true
+  roles:
+    - common
+    - forge_ssl
+    - zenoamaro.postgresql
+
+  tasks:
+    - meta: flush_handlers
+
+    - include: tasks/main.yml
+      sudo_user: postgres

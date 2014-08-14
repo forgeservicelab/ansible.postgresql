@@ -1,0 +1,35 @@
+---
+web_domain: 
+
+postgresql_users:
+  - name: 
+    pass: 
+    encrypted: 
+
+postgresql_databases:
+  - name: 
+    hstore: 
+    uuid-ossp: 
+    owner: 
+
+postgresql_user_privileges:
+  - name: 
+    db: 
+    priv:
+
+postgresql_listen_addresses: []
+
+postgresql_log_destination: 
+
+postgresql_logging_collector: 
+
+postgresql_authentication:
+  - type: 
+    user: 
+    method: 
+    database: 
+    address: 
+
+postgresql_ssl: 
+postgresql_ssl_cert_file:
+postgresql_ssl_key_file:

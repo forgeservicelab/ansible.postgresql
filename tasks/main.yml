@@ -1,0 +1,26 @@
+---
+- meta: flush_handlers
+
+- name: Create Users
+  postgresql_user:
+    name: "{{ item.name }}"
+    password: "{{ item.pass }}"
+    encrypted: "{{ item.encrypted }}"
+  with_items:
+    - "{{ postgresql_users }}"
+
+- name: Create Databases
+  postgresql_db:
+    name: "{{ item.name }}"
+    owner: "{{ item.owner }}"
+  with_items:
+    - "{{ postgresql_databases }}"
+
+- name: Assign privileges
+  postgresql_privs:
+    role: "{{ item.name }}"
+    db: "{{ item.db }}"
+    privs: "{{ item.priv }}"
+    objs: "ALL_IN_SCHEMA"
+  with_items:
+    - "{{ postgresql_user_privileges }}"
