@@ -1,0 +1,6 @@
+#roles/forge_ssl
+- src: git+ssh://gitlab@git.forgeservicelab.fi:10022/ansible-roles/forge_ssl.git
+#roles/common
+- src: git+ssh://gitlab@git.forgeservicelab.fi:10022/ansible-roles/common.git
+#roles/zenoamaro.postgresql
+- src: https://github.com/zenoamaro/ansible-postgresql.git
