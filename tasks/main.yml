@@ -6,6 +6,7 @@
     name: "{{ item.name }}"
     password: "{{ item.pass }}"
     encrypted: "{{ item.encrypted }}"
+  when: "inventory_hostname == 'master'"
   with_items:
     - "{{ postgresql_users }}"
 
@@ -13,6 +14,7 @@
   postgresql_db:
     name: "{{ item.name }}"
     owner: "{{ item.owner }}"
+  when: "inventory_hostname == 'master'"
   with_items:
     - "{{ postgresql_databases }}"
 
@@ -22,5 +24,6 @@
     db: "{{ item.db }}"
     privs: "{{ item.priv }}"
     objs: "ALL_IN_SCHEMA"
+  when: "inventory_hostname == 'master'"
   with_items:
     - "{{ postgresql_user_privileges }}"
