@@ -7,5 +7,6 @@
   path: roles/
 
 #roles/zenoamaro.postgresql
-- src: https://github.com/zenoamaro/ansible-postgresql.git
+- role: zenoamaro.postgresql
   path: roles/
+
