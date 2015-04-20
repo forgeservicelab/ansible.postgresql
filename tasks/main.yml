@@ -1,5 +1,14 @@
 ---
-- meta: flush_handlers
+- name: Patch broken postgresql logrotation
+  copy:
+    dest: /etc/logrotate.d/postgresql-cleanup
+    content: |
+      /var/log/postgresql/postgresql-2???-??-??_* {
+        daily
+        rotate 0
+        maxage 15
+        su root root
+      }
 
 - name: Create Users
   postgresql_user:
