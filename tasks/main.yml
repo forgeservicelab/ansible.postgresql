@@ -1,5 +1,6 @@
 ---
 - name: Patch broken postgresql logrotation
+  sudo_user: root
   copy:
     dest: /etc/logrotate.d/postgresql-cleanup
     content: |
