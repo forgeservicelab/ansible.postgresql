@@ -1,0 +1,205 @@
+---
+web_domain: dbserver.forgeservicelab.fi
+
+postgresql_users:
+  - name: redmine
+    pass: <PASSWORD>
+    encrypted: yes
+
+  - name: gitlab
+    pass: <PASSWORD>
+    encrypted: yes
+
+  - name: casino
+    pass: <PASSWORD>
+    encrypted: yes
+
+  - name: openfire
+    pass: <PASSWORD>
+    encrypted: yes
+
+  - name: birt
+    pass: <PASSWORD>
+    encrypted: yes
+
+postgresql_databases:
+  - name: redmine_production
+    hstore: yes
+    uuid-ossp: yes
+    owner: redmine
+
+  - name: gitlab_production
+    hstore: yes
+    uuid-ossp: yes
+    owner: gitlab
+
+  - name: redmine_testing
+    hstore: yes
+    uuid-ossp: yes
+    owner: redmine
+
+  - name: gitlab_testing
+    hstore: yes
+    uuid-ossp: yes
+    owner: gitlab
+
+  - name: CASinoApp_production
+    hstore: yes
+    uuid-ossp: yes
+    owner: casino
+
+  - name: CASinoApp_testing
+    hstore: yes
+    uuid-ossp: yes
+    owner: casino
+
+  - name: xmpp_production
+    hstore: yes
+    uuid-ossp: yes
+    owner: openfire
+
+  - name: xmpp_testing
+    hstore: yes
+    uuid-ossp: yes
+    owner: openfire
+
+  - name: iaas_production
+    hstore: yes
+    uuid-ossp: yes
+    owner: birt
+
+  - name: iaas_testing
+    hstore: yes
+    uuid-ossp: yes
+    owner: birt
+    
+postgresql_user_privileges:
+  - name: redmine
+    db: redmine_production
+    priv: "ALL"
+
+  - name: redmine
+    db: redmine_testing
+    priv: "ALL"
+
+  - name: gitlab
+    db: gitlab_production
+    priv: "ALL"
+
+  - name: gitlab
+    db: gitlab_testing
+    priv: "ALL"
+
+  - name: casino
+    db: CASinoApp_production
+    priv: "ALL"
+
+  - name: casino
+    db: CASinoApp_testing
+    priv: "ALL"
+
+  - name: openfire
+    db: xmpp_production
+    priv: "ALL"
+
+  - name: openfire
+    db: xmpp_testing
+    priv: "ALL"
+
+  - name: birt
+    db: iaas_production
+    priv: "ALL"
+
+  - name: birt
+    db: iaas_testing
+    priv: "ALL"
+    
+postgresql_listen_addresses:
+  - 0.0.0.0
+
+postgresql_log_destination: syslog
+
+postgresql_logging_collector: on
+
+postgresql_authentication:
+  - type: hostssl
+    user: redmine
+    method: md5
+    database: 'redmine_production'
+    address: '193.166.25.157/32'
+
+  - type: hostssl
+    user: redmine
+    method: md5
+    database: 'redmine_production'
+    address: '193.166.24.104/32'
+
+  - type: hostssl
+    user: redmine
+    method: md5
+    database: 'redmine_testing'
+    address: '193.166.24.138/32'
+
+  - type: hostssl
+    user: redmine
+    method: md5
+    database: 'redmine_testing'
+    address: '193.166.25.75/32'
+
+  - type: hostssl
+    user: gitlab
+    method: md5
+    database: 'gitlab_production'
+    address: '193.166.24.105/32'
+
+  - type: hostssl
+    user: gitlab
+    method: md5
+    database: 'gitlab_testing'
+    address: '193.166.24.210/32'
+
+  - type: hostssl
+    user: casino
+    method: md5
+    database: 'CASinoApp_production'
+    address: '86.50.28.78/32'
+
+  - type: hostssl
+    user: casino
+    method: md5
+    database: 'CASinoApp_testing'
+    address: '193.166.25.240/32'
+
+  - type: hostssl
+    user: openfire
+    method: md5
+    database: 'xmpp_production'
+    address: '193.166.25.157/32'
+
+  - type: hostssl
+    user: openfire
+    method: md5
+    database: 'xmpp_testing'
+    address: '193.166.24.138/32'
+
+  - type: hostssl
+    user: birt
+    method: md5
+    database: 'iaas_production'
+    address: '193.166.24.104/32'
+
+  - type: hostssl
+    user: birt
+    method: md5
+    database: 'iaas_testing'
+    address: '193.166.25.75/32'
+   
+  - type: hostssl
+    user: all
+    method: trust
+    database: replication
+    address: '192.168.2.13/32'
+ 
+postgresql_ssl: on
+postgresql_ssl_cert_file: /etc/ssl/forgeservicelab.fi.crt.wholechain
+postgresql_ssl_key_file: /etc/ssl/forgeservicelab.fi.key
